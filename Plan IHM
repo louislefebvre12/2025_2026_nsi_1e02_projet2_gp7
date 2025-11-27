@@ -1,0 +1,3 @@
+A partir d'une base de donnée prise de https://www.data.gouv.fr/ le programme doit pouvoir les comprendre et les analyser.
+On doit rajouter des options qu'un utilisateur pourrait demander par exemple: comparer des données, faire un graphique, les trier en fonctions de filtres, etc
+A l'aide de Pandas et de Tkinter
