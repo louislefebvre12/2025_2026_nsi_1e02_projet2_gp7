@@ -12,3 +12,6 @@ data = data.drop(['column','column',...], axis=1) éliminer des colonnes
 data.shape afficher les limites du dossier
 data.columns afficher les colonnes du dossier avec les titres
 data.head() afficher les premieres lignes du dossier
+data.describe() statistiques de bases des colonnes du dossier
+data.fillna(data['column'].mean()) remplacer des données manquantes par des données par défaut(la moyenne ici) !!!! corruption du data set !!!!
+data.dropna(axis = 0)  éliminer les lignes dans lesquelles il nous manque des données dommage
