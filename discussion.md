@@ -18,3 +18,7 @@ data.dropna(axis = 0)  éliminer les lignes dans lesquelles il nous manque des d
 data['column'].value_counts() donne les infos de la colonnne sélectionnée
 data['column'].value_counts().plot.bar() fait un graphique avec des barres des infos de la colonne sélectionnée !!!! ne pas oublier plt.show() 
 plt.show() affiche dans une nouvelle fenetre le graphique matplotlib
+
+fonctions tkinter importantes : 
+tk.Tk()          crée la fenêtre principale
+root.mainloop()         lance la boucle événementielle, c'est indispensable
