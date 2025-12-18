@@ -1,0 +1,22 @@
+from tkinter import *
+
+root = Tk()
+root.title("Estimation Âge (Majeur ou mineur)")
+
+def calculer():
+    age = float(entry.get())
+    if age >= 18:
+        resultat.config(text="Majeur")
+    else:
+        resultat.config(text="Petit mineur va miam!")
+
+Label(root, text="Entre ton age  :").pack()
+entry = Entry(root)
+entry.pack()
+
+
+Button(root, text="Calculer", command=calculer).pack()
+resultat = Label(root, text="")
+resultat.pack()
+
+root.mainloop()
