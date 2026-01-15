@@ -1,7 +1,7 @@
 from tkinter import *
 
 root = Tk()
-root.title("Estimation Âge (Majeur ou mineur)")
+root.title("Estimation du Résultat au BAC")
 
 def calculer():
     age = float(entry.get())
