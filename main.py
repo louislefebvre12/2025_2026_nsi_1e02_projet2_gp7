@@ -20,13 +20,16 @@ fig, ax = plt.subplots()
 canvas = FigureCanvasTkAgg(fig, master = root)
 
 frame = Frame(root)
-label = Label(text = ' Résultats au BAC ')
+label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
 label.config(font=("Courrier", 32))
 label.pack()
 
-Button(frame, text = 'Bouton 1', command = plot).pack(padx = 0, pady = 10)
-Button(frame, text = 'Bouton 2', command = plot).pack(padx = 200 ,pady = 10)
-
+for i in range(1, 6):
+    Button(
+        frame,
+        text=f'Statistique {i}',
+        command=plot
+    ).pack(side=LEFT, padx=10, pady=10)
 
 canvas.get_tk_widget().pack()
 
