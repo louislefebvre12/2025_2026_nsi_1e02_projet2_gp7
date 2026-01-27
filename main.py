@@ -58,3 +58,9 @@ canvas.get_tk_widget().pack()
 frame.pack()
 
 root.mainloop()
+
+
+
+
+data = data.drop["num_ligne", "Session", "Académie", "Département"]
+print(data)
