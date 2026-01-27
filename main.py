@@ -41,7 +41,7 @@ label.pack()
 for i in range(1, 6):
     Button(
         frame,
-        text=f'Statistique {i}',
+        text=f'Statistiques {i}',
         command=plot
     ).pack(side=LEFT, padx=10, pady=10)
 
