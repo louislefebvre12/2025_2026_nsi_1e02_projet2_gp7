@@ -38,12 +38,12 @@ label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2
 label.config(font=("Courrier", 32))
 label.pack()
 
-for i in range(1, 6):
-    Button(
-        frame,
-        text=f'Statistiques {i}',
-        command=plot
-    ).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
 
 canvas.get_tk_widget().pack()
 
