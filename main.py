@@ -8,7 +8,7 @@ from matplotlib.figure import Figure
 data = pd.read_excel('fr-en-baccalaureat-par-departement.xlsx')
 data = pd.DataFrame(data)
 
-pd.DataFrame.drop(['column','column',...])
+print (data.drop['num_ligne','Session','Département'])
 
 data_A = {'x': [1, 2, 3, 4, 5], 'y': [1, 4, 9, 16, 25]}
 data_B = {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 3, 2, 1]} 
@@ -23,18 +23,18 @@ dfs = {
     'D': pd.DataFrame(data_D)
 }
 
-def plot():
-    data["Code académie"].value_counts().plot.bar()
+#def plot():
+#    data["Code académie"].value_counts().plot.bar()
 
 #    x = 
 
-#def plot() : 
-#    ax.clear()
-#
-#    x = np.random.randint(0, 10, 10)
-#    y = np.random.randint(0, 10, 10)
-#    ax.scatter(x,y)
-#    canvas.draw() 
+def plot() : 
+    ax.clear()
+
+    x = np.random.randint(0, 10, 10)
+    y = np.random.randint(0, 10, 10)
+    ax.scatter(x,y)
+    canvas.draw() 
 
 
 root = Tk()
