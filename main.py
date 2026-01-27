@@ -5,10 +5,6 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
-data = pd.read_excel('fr-en-baccalaureat-par-departement.xlsx')
-data = pd.DataFrame(data)
-
-print (data.drop['num_ligne','Session','Département'])
 
 data_A = {'x': [1, 2, 3, 4, 5], 'y': [1, 4, 9, 16, 25]}
 data_B = {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 3, 2, 1]} 
@@ -23,44 +19,53 @@ dfs = {
     'D': pd.DataFrame(data_D)
 }
 
-#def plot():
-#    data["Code académie"].value_counts().plot.bar()
-
-#    x = 
-
-def plot() : 
-    ax.clear()
-
-    x = np.random.randint(0, 10, 10)
-    y = np.random.randint(0, 10, 10)
-    ax.scatter(x,y)
-    canvas.draw() 
-
 
 root = Tk()
-fig, ax = plt.subplots()
-canvas = FigureCanvasTkAgg(fig, master = root)
 
-frame = Frame(root)
-label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
-label.config(font=("Courrier", 32))
-label.pack()
+def show_window(root):
+    window = Toplevel(root)# Création d'une nouvelle fenêtre
+    window.title("Nouvelle Fenêtre")# Définition du titre
+    window.geometry("300x200")# Dimensions de la fenêtre
 
-Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
-Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
-Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
-Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
-Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
-Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
+    # Personnalisation de la fenêtre
+    window.configure(bg="gray",relief="raised")# Changement de couleur de fond et du relief
 
-canvas.get_tk_widget().pack()
+    # Gestion des interactions avec la fenêtre
+    window.transient(root)# Place la fenêtre fille au-dessus de la fenêtre parent
+    window.grab_set()# Empêche l'utilisateur d'interagir avec la fenêtre parent
+    window.focus_set()# Donne le focus à la fenêtre fille
 
-frame.pack()
+show_window ()
 
-root.mainloop()
+# def plot() : 
+#     ax.clear()
+
+#     x = np.random.randint(0, 10, 10)
+#     y = np.random.randint(0, 10, 10)
+#     ax.scatter(x,y)
+#     canvas.draw() 
+
+# def plot_window():
+#     fig, ax = plt.subplots()
+#     canvas = FigureCanvasTkAgg(fig, master = root)
+
+#     frame = Frame(root)
+#     label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
+#     label.config(font=("Courrier", 32))
+#     label.pack()
+
+#     Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
+#     Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
+#     Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
+#     Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
+#     Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
+#     Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
+
+#     canvas.get_tk_widget().pack()
+
+#     frame.pack()
+
+#     root.mainloop()
 
 
-
-
-data = data.drop["num_ligne", "Session", "Académie", "Département"]
-print(data)
+# plot_window()
