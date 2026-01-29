@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
 from tkinter import *
 import pandas as pd
 import numpy as np
@@ -5,67 +8,61 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
+class Extra(tk.Toplevel):
+	def __init__(self):
+		super().__init__()
+		self.title('extra window')
+		self.geometry('300x400')
+		ttk.Label(self, text = 'A label').pack()
+		ttk.Button(self, text = 'A button').pack()
+		ttk.Label(self, text = 'another label').pack(expand = True)
+		self.plot_window ()
+	def plot_window(self):
+		root = Tk()
+		fig, ax = plt.subplots()
+		canvas = FigureCanvasTkAgg(fig, master = root)
+		frame = Frame(root)
+		label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
+		label.config(font=("Courrier", 32))
+		label.pack()
+		Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
+		canvas.get_tk_widget().pack()
+		frame.pack()
+		root.mainloop()
+	
 
-data_A = {'x': [1, 2, 3, 4, 5], 'y': [1, 4, 9, 16, 25]}
-data_B = {'x': [1, 2, 3, 4, 5], 'y': [5, 4, 3, 2, 1]} 
-data_C = {'x': [1, 2, 3, 4, 5], 'y': [1, 2, 3, 4, 5]} 
-data_D = {'x': [1, 2, 3, 4, 5], 'y': [5, 10, 15, 20, 25]}  
+# https://docs.python.org/3/library/tkinter.messagebox.html
+def ask_yes_no():
+	# answer = messagebox.askquestion('Title', 'Body')
+	# print(answer)
+	messagebox.showerror('Info title', 'Here is some information')
 
+def create_window():
+	global extra_window
+	extra_window = Extra()
+	
 
-dfs = {
-    'A': pd.DataFrame(data_A),
-    'B': pd.DataFrame(data_B),
-    'C': pd.DataFrame(data_C),
-    'D': pd.DataFrame(data_D)
-}
+def close_window():
+	extra_window.destroy()
 
+# window
+window = tk.Tk()
+window.geometry('600x400')
+window.title('Multiple windows')
 
-root = Tk()
+button1 = ttk.Button(window, text = 'open main window', command = create_window)
+button1.pack(expand = True)
 
-def show_window(root):
-    window = Toplevel(root)# Création d'une nouvelle fenêtre
-    window.title("Nouvelle Fenêtre")# Définition du titre
-    window.geometry("300x200")# Dimensions de la fenêtre
+button2 = ttk.Button(window, text = 'close main window', command = close_window)
+button2.pack(expand = True)
 
-    # Personnalisation de la fenêtre
-    window.configure(bg="gray",relief="raised")# Changement de couleur de fond et du relief
+button3 = ttk.Button(window, text = 'create yes no window', command = ask_yes_no)
+button3.pack(expand = True)
 
-    # Gestion des interactions avec la fenêtre
-    window.transient(root)# Place la fenêtre fille au-dessus de la fenêtre parent
-    window.grab_set()# Empêche l'utilisateur d'interagir avec la fenêtre parent
-    window.focus_set()# Donne le focus à la fenêtre fille
-
-show_window ()
-
-# def plot() : 
-#     ax.clear()
-
-#     x = np.random.randint(0, 10, 10)
-#     y = np.random.randint(0, 10, 10)
-#     ax.scatter(x,y)
-#     canvas.draw() 
-
-# def plot_window():
-#     fig, ax = plt.subplots()
-#     canvas = FigureCanvasTkAgg(fig, master = root)
-
-#     frame = Frame(root)
-#     label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
-#     label.config(font=("Courrier", 32))
-#     label.pack()
-
-#     Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
-
-#     canvas.get_tk_widget().pack()
-
-#     frame.pack()
-
-#     root.mainloop()
-
-
-# plot_window()
+# run 
+window.mainloop()
