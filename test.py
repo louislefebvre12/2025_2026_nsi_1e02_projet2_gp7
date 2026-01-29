@@ -20,5 +20,12 @@ print(data["Code académie"].value_counts().plot.bar())
 print("=============================================")
 print(data.groupby("Genre").mean(numeric_only=True))
 print("=============================================")
+y = data["Genre"]
+x = data["Voie"]
+fig = plt.figure(figsize=(20,100))
+plt.plot(x,y)
+plt.title ("Test")
+plt.xlabel ("Axe x")
+plt.ylabel ("Axe y")
 # plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
 plt.show ()
