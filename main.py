@@ -19,53 +19,38 @@ dfs = {
     'D': pd.DataFrame(data_D)
 }
 
+#def plot():
+#    data["Code académie"].value_counts().plot.bar()
+
+#    x = 
+
+def plot() : 
+    ax.clear()
+
+    x = np.random.randint(0, 10, 10)
+    y = np.random.randint(0, 10, 10)
+    ax.figure(x,y)
+    canvas.draw() 
+
 
 root = Tk()
+fig, ax = plt.subplots()
+canvas = FigureCanvasTkAgg(fig, master = root)
 
-def show_window(root):
-    window = Toplevel(root)# Création d'une nouvelle fenêtre
-    window.title("Nouvelle Fenêtre")# Définition du titre
-    window.geometry("300x200")# Dimensions de la fenêtre
+frame = Frame(root)
+label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
+label.config(font=("Courrier", 32))
+label.pack()
 
-    # Personnalisation de la fenêtre
-    window.configure(bg="gray",relief="raised")# Changement de couleur de fond et du relief
+Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
+Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
 
-    # Gestion des interactions avec la fenêtre
-    window.transient(root)# Place la fenêtre fille au-dessus de la fenêtre parent
-    window.grab_set()# Empêche l'utilisateur d'interagir avec la fenêtre parent
-    window.focus_set()# Donne le focus à la fenêtre fille
+canvas.get_tk_widget().pack()
 
-show_window ()
+frame.pack()
 
-# def plot() : 
-#     ax.clear()
-
-#     x = np.random.randint(0, 10, 10)
-#     y = np.random.randint(0, 10, 10)
-#     ax.scatter(x,y)
-#     canvas.draw() 
-
-# def plot_window():
-#     fig, ax = plt.subplots()
-#     canvas = FigureCanvasTkAgg(fig, master = root)
-
-#     frame = Frame(root)
-#     label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
-#     label.config(font=("Courrier", 32))
-#     label.pack()
-
-#     Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
-#     Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
-
-#     canvas.get_tk_widget().pack()
-
-#     frame.pack()
-
-#     root.mainloop()
-
-
-# plot_window()
+root.mainloop()
