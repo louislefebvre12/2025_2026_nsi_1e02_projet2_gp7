@@ -16,23 +16,37 @@ class Extra(Toplevel):
 		Button(self, text = 'A button').pack()
 		Label(self, text = 'another label').pack(expand = True)
 		self.plot_window ()
+	
 	def plot_window(self):
-		root = Tk()
-		fig, ax = plt.subplots()
-		canvas = FigureCanvasTkAgg(fig, master = root)
-		frame = Frame(root)
-		label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
-		label.config(font=("Courrier", 32))
-		label.pack()
-		Button(frame,text=f'Statistiques 1',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 2',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 3',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 4',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 5',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 6',command=plt).pack(side=LEFT, padx=10, pady=10)
-		canvas.get_tk_widget().pack()
-		frame.pack()
-		root.mainloop()
+		top = Toplevel(self)
+		top.title("Résultats au BAC")
+		top.geometry("900x600")
+
+		fig, ax = plt.subplots(figsize=(6, 4))
+		canvas = FigureCanvasTkAgg(fig, master=top)
+
+		label = Label(
+			top,
+			text='Résultats au BAC',
+			padx=10,
+			pady=10,
+			borderwidth=2,
+			relief='solid',
+			font=("Courier", 24)
+		)
+		label.pack(pady=10)
+
+		frame = Frame(top)
+		frame.pack(pady=10)
+
+		for i in range(1, 7):
+			Button(
+				frame,
+				text=f'Statistiques {i}',
+				command=lambda i=i: print(f"Stat {i}")
+			).pack(side=LEFT, padx=5)
+
+		canvas.get_tk_widget().pack(expand=True, fill=BOTH)
 	
 
 
@@ -63,3 +77,8 @@ button3 = Button(window, text = 'create yes no window', command = ask_yes_no)
 button3.pack(expand = True)
 
 window.mainloop()
+
+
+
+
+
