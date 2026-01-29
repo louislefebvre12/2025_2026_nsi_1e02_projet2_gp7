@@ -25,12 +25,12 @@ class Extra(tk.Toplevel):
 		label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
 		label.config(font=("Courrier", 32))
 		label.pack()
-		Button(frame,text=f'Statistiques 1',command=plot).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 2',command=plot).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 3',command=plot).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 4',command=plot).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 5',command=plot).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 6',command=plot).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 1',command=plt).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 2',command=plt).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 3',command=plt).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 4',command=plt).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 5',command=plt).pack(side=LEFT, padx=10, pady=10)
+		Button(frame,text=f'Statistiques 6',command=plt).pack(side=LEFT, padx=10, pady=10)
 		canvas.get_tk_widget().pack()
 		frame.pack()
 		root.mainloop()
@@ -48,17 +48,17 @@ def create_window():
 	
 
 def close_window():
-	extra_window.destroy()
+	exit()
 
 # window
 window = tk.Tk()
 window.geometry('600x400')
 window.title('Multiple windows')
 
-button1 = ttk.Button(window, text = 'open main window', command = create_window)
+button1 = ttk.Button(window, text = 'Open main window', command = create_window)
 button1.pack(expand = True)
 
-button2 = ttk.Button(window, text = 'close main window', command = close_window)
+button2 = ttk.Button(window, text = 'Close main window', command = close_window)
 button2.pack(expand = True)
 
 button3 = ttk.Button(window, text = 'create yes no window', command = ask_yes_no)
