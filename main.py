@@ -18,7 +18,6 @@ class Extra(Toplevel):
 		self.plot_window ()
 	
 	def plot_window(self):
-<<<<<<< Updated upstream
 		top = Toplevel(self)
 		top.title("Résultats au BAC")
 		top.geometry("900x600")
@@ -48,33 +47,6 @@ class Extra(Toplevel):
 			).pack(side=LEFT, padx=5)
 
 		canvas.get_tk_widget().pack(expand=True, fill=BOTH)
-=======
-		root = Tk()
-		fig, ax = plt.subplots()
-		canvas = FigureCanvasTkAgg(fig, master = root)
-		frame = Frame(root)
-		label = Label(text = ' Résultats au BAC', padx = 10, pady = 10, borderwidth = 2, relief = 'solid')
-		label.config(font=("Courrier", 32))
-		label.pack()
-		Button(frame,text=f'Statistiques 1',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 2',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 3',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 4',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 5',command=plt).pack(side=LEFT, padx=10, pady=10)
-		Button(frame,text=f'Statistiques 6',command=plt).pack(side=LEFT, padx=10, pady=10)
-		canvas.get_tk_widget().pack()
-		frame.pack()
-		root.mainloop()
-
-listbox = Tk.Listbox(root)
-for col in df.columns:
-    listbox.insert(tk.END, col)
-listbox.pack()
-
-def valider():
-    selection = listbox.get(listbox.curselection())
-    print(selection)
->>>>>>> Stashed changes
 	
 
 
