@@ -2,12 +2,12 @@ from model import Model
 from view import View
 
 class Controller:
-    def __init__(self, root):
+    def __init__(self, root, model, view):
         """
         Initialise le contrôleur, la vue et le modèle.
         """
-        self.model = Model()
-        self.view = View(root)
+        self.model = model
+        self.view = view
 
         # Charger les données initiales
         chaines = self.model.charger_chaines()

@@ -62,19 +62,12 @@ def close_window():
 
 
 window = Tk()
-window.geometry('600x400')
-window.title('Multiple windows')
 
 
-button1 = Button(window, text = 'Open main window', command = plot_window(self))
-button1.pack(expand = True)
 
-button2 = Button(window, text = 'Close main window', command = close_window)
-button2.pack(expand = True)
-
-button3 = Button(window, text = 'create yes no window', command = ask_yes_no)
-button3.pack(expand = True)
-
+model = Model ()
+view = View (window)
+app = Controller(window, model, view)
 window.mainloop()
 
 
