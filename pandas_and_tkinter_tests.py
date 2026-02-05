@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import seaborn as sns
 
 data = pd.read_excel('fr-en-baccalaureat-par-departement.xlsx')
 print(data)
@@ -21,13 +22,14 @@ print(data["Code académie"].value_counts().plot.bar())
 print("=============================================")
 print(data.groupby("Genre").mean(numeric_only=True))
 print("=============================================")
-y = data["Genre"]
+y = data["Code académie"]
 x = data["Taux de réussite à l'examen"]
 fig = plt.figure(figsize=(20,100))
 plt.plot(x,y)
-plt.title ("Test")
-plt.xlabel ("Axe x")
-plt.ylabel ("Axe y")
+plt.title ("Graphique stylé")
+plt.xlabel ("Taux de réussite à l'examen")
+plt.ylabel ("Code académie")
 # plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
-data.plot(x='x', y='y')
+sns.barplot(data=data, x='Voie', y='Session', hue='Genre')
+plt.title('diagramme session code académie et genre')
 plt.show ()
