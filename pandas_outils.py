@@ -22,23 +22,23 @@ print("=============================================")
 print(data.groupby("Genre").mean(numeric_only=True))
 print("=============================================")
 #Diagramme de dispersion a corriger
-#y = data["Genre"]
-#x = data["Code académie"]
+y = data["Code académie"]
+x = data["Genre"]
 fig = plt.figure(figsize=(20,100))
-#plt.scatter(x,y)
-#plt.title ("Test")
-#plt.xlabel ("Axe x")
-#plt.ylabel ("Axe y")
-# plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
+plt.scatter(x,y)
+plt.title ("Test")
+plt.xlabel ("Axe x")
+plt.ylabel ("Axe y")
+plt.plot( data["Genre"], data["Code académie"], ) #peut servir pour comparer deux colonnes
 print("=============================================")
 #Tracé linéaire a corriger
-code_academie_genre = data[['Code académie', 'Genre']].astype({'Code académie': 'string'}).groupby('Genre').sum().reset_index()
-plt.plot(code_academie_genre['Code académie'], code_academie_genre['Genre'])
-plt.title('Code académie par genre')
+#code_academie_genre = data[['Voie', 'Genre']].astype({'Voie': 'string'}).groupby('Genre').sum().reset_index()
+#plt.plot(code_academie_genre['Voie'], code_academie_genre['Genre'])
+#plt.title('Code académie par genre')
 print("=============================================")
 #Histogramme a corriger
-plt.hist(data['Genre'])
-plt.title('Histogramme genre')
+#plt.hist(data['Genre'])
+#plt.title('Histogramme genre')
 print("=============================================")
 #Camembert a corriger
 #data = data('')['Genre'].count().reset_index()
@@ -46,6 +46,6 @@ print("=============================================")
 #plt.title('Camembert code académie et genre')
 print("=============================================")
 #Diagramme à barres groupées a corriger
-sns.barplot(data=data, x='Voie', y='Session', hue='Genre')
-plt.title('diagramme session code académie et genre')
+#sns.barplot(data=data, x='Voie', y='Session', hue='Genre')
+#plt.title('diagramme session voie et genre')
 plt.show ()
