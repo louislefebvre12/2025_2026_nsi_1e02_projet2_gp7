@@ -7,68 +7,40 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
+from tkinter import *
+from tkinter import messagebox
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 class Extra(Toplevel):
-	def __init__(self):
-		super().__init__()
-		self.title('extra window')
-		self.geometry('300x400')
-		Label(self, text = 'A label').pack()
-		Button(self, text = 'A button').pack()
-		Label(self, text = 'another label').pack(expand = True)
-		self.plot_window ()
-	
-	def plot_window(self):
-		top = Toplevel(self)
-		top.title("Résultats au BAC")
-		top.geometry("900x600")
+    def __init__(self, master):
+        super().__init__(master)
+        self.title('extra window')
+        self.geometry('300x400')
 
-		fig, ax = plt.subplots(figsize=(6, 4))
-		canvas = FigureCanvasTkAgg(fig, master=top)
+        Label(self, text='A label').pack()
+        Button(self, text='A button').pack()
+        Label(self, text='another label').pack()
 
-		label = Label(
-			top,
-			text='Résultats au BAC',
-			padx=10,
-			pady=10,
-			borderwidth=2,
-			relief='solid',
-			font=("Courier", 24)
-		)
-		label.pack(pady=10)
+        self.plot_window()
 
-		frame = Frame(top)
-		frame.pack(pady=10)
+    def plot_window(self):
+        top = Toplevel(self)
+        top.title("Résultats au BAC")
+        top.geometry("900x600")
 
-		for i in range(1, 7):
-			Button(
-				frame,
-				text=f'Statistiques {i}',
-				command=lambda i=i: print(f"Stat {i}")
-			).pack(side=LEFT, padx=5)
-
-		canvas.get_tk_widget().pack(expand=True, fill=BOTH)
-	
-
-
+        fig, ax = plt.subplots(figsize=(6, 4))
+        canvas = FigureCanvasTkAgg(fig, master=top)
+        canvas.draw()
+        canvas.get_tk_widget().pack(expand=True, fill=BOTH)
 
 def ask_yes_no():
-	messagebox.showerror('Info title', 'Here is some information')
-
-
-	
-
-def close_window():
-	exit()
-
+    messagebox.showerror('Info title', 'Here is some information')
 
 window = Tk()
-
-
-
-model = Model ()
-view = View (window)
-app = Controller(window, model, view)
+Extra(window)
 window.mainloop()
+
 
 
 
