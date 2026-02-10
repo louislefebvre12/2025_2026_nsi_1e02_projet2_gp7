@@ -19,31 +19,54 @@ print(data.head())
 print("=============================================")
 print(data.describe())
 print("=============================================")
-print(data["Code académie"].value_counts())
-print("=============================================")
-print(data["Code académie"].value_counts().plot.bar())
-print("=============================================")
-print(data.groupby("Genre").mean(numeric_only=True))
-print("=============================================")
-y = data["Code académie"]
-x = data["Taux de réussite à l'examen"]
-fig = plt.figure(figsize=(20,100))
-plt.plot(x,y)
-plt.title ("Graphique stylé")
-plt.xlabel ("Taux de réussite à l'examen")
-plt.ylabel ("Code académie")
-# plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
-sns.barplot(data=data, x='Code département', y="Taux de réussite à l'examen", hue='Genre')
-plt.title('diagramme session code académie et genre')
-root = tk.Tk()
-root.title("Histogramme du taux de réussite à l'examen par académie")
-root.geometry("600x400")
 
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.hist(data["Taux de réussite à l'examen"], bins=5, color="skyblue", edgecolor="black")
+#ca fait un histogramme sur le côté du taux de réussite à l'examen en fonction du genre. IMPORTANT !!
+fig = plt.figure(figsize=(20,100))
+
+plt.title ("Graphique stylé")
+plt.xlabel ("Genre")
+plt.ylabel ("Taux de réussite à l'examen")
+# plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
+sns.barplot(data=data, x="Taux de réussite à l'examen", y="Genre")
+plt.title("Diagramme du taux de réussite à l'examen en fonction du genre")
+
+#ca fait un histogramme sur le côté du taux de réussite en fonction de la voie
+fig = plt.figure(figsize=(20,100))
+
+plt.title ("Graphique stylé")
+plt.xlabel ("Voie")
+plt.ylabel ("Taux de réussite à l'examen")
+# plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
+sns.barplot(data=data, x="Taux de réussite à l'examen", y="Voie")
+plt.title("Diagramme du taux de réussite à l'examen en fonction de la voie") 
+
+#ca fait un histogramme du taux de réussite à l'examen en fonction du code département. IMPORTANT !!
+root = tk.Tk()
+root.title("Histogramme du taux de réussite à l'examen par code département")
+root.geometry("1920x1080")
+
+fig, ax = plt.subplots(figsize=(21, 10))
+ax.hist(data["Code département"], bins=5, color="skyblue", edgecolor="black")
 
 ax.set_title("Histogramme")
-ax.set_xlabel("Code académie")
+ax.set_xlabel("Code département")
+ax.set_ylabel("Taux de réussite à l'examen")
+
+canvas = FigureCanvasTkAgg(fig, master=root)
+canvas.draw()
+canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+plt.show ()
+
+
+root = tk.Tk()
+root.title("Histogramme du taux de réussite à l'examen en fonction de la session")
+root.geometry("1920x1080")
+
+fig, ax = plt.subplots(figsize=(21, 10))
+ax.hist(data["Session"], bins=5, color="skyblue", edgecolor="black")
+
+ax.set_title("Histogramme")
+ax.set_xlabel("Session")
 ax.set_ylabel("Taux de réussite à l'examen")
 
 canvas = FigureCanvasTkAgg(fig, master=root)
