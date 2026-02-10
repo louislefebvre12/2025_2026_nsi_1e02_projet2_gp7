@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+import tkinter as tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 data = pd.read_excel('fr-en-baccalaureat-par-departement.xlsx')
 print(data)
@@ -22,23 +25,71 @@ print("=============================================")
 print(data.groupby("Genre").mean(numeric_only=True))
 print("=============================================")
 #Diagramme de dispersion a corriger
-y = data["Code académie"]
-x = data["Genre"]
-fig = plt.figure(figsize=(20,100))
-plt.scatter(x,y)
-plt.title ("Test")
-plt.xlabel ("Axe x")
-plt.ylabel ("Axe y")
-plt.plot( data["Genre"], data["Code académie"], ) #peut servir pour comparer deux colonnes
+#y = data["Code académie"]
+#x = data["Genre"]
+#fig = plt.figure(figsize=(20,100))
+#plt.scatter(x,y)
+#plt.title ("Test")
+#plt.xlabel ("Axe x")
+#plt.ylabel ("Axe y")
+#plt.plot( data["Genre"], data["Code académie"], ) #peut servir pour comparer deux colonnes
 print("=============================================")
 #Tracé linéaire a corriger
-#code_academie_genre = data[['Voie', 'Genre']].astype({'Voie': 'string'}).groupby('Genre').sum().reset_index()
-#plt.plot(code_academie_genre['Voie'], code_academie_genre['Genre'])
-#plt.title('Code académie par genre')
+# AGGREGATION = "mean"
+# data = pd.read_excel("fr-en-baccalaureat-par-departement.xlsx")
+# data.columns = (
+#     data.columns
+#     .str.strip()
+# )
+# data["Taux de réussite à l'examen"] = (
+#     data["Taux de réussite à l'examen"]
+#     .astype(str)
+#     .str.replace('%', '', regex=False)
+#     .str.replace(',', '.', regex=False)
+# )
+# data["Taux de réussite à l'examen"] = pd.to_numeric(data["Taux de réussite à l'examen"], errors='coerce')
+# if AGGREGATION == "mean":
+#     df = data.groupby("Code académie", as_index=False)["Taux de réussite à l'examen"].mean()
+# else:
+#     raise ValueError("Probleme de donnés")
+# df = df.sort_values("Code académie")
+# root = tk.Tk()
+# root.title("Courbe du taux de réussite par académie")
+# root.geometry("1200x800")
+# fig, ax = plt.subplots(figsize=(10, 6))
+# sns.lineplot(
+#     data=df,
+#     x="Code académie",
+#     y="Taux de réussite à l'examen",
+#     marker="o",
+#     ax=ax
+# )
+# ax.set_title("Courbe du taux de réussitepar académie")
+# ax.set_xlabel("Code académie")
+# ax.set_ylabel("Taux de réussite à l'examen à l'examen")
+# ax.grid(True)
+# plt.xticks(rotation=45)
+# plt.tight_layout()
+# canvas = FigureCanvasTkAgg(fig, master=root)
+# canvas.draw()
+# canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+
 print("=============================================")
 #Histogramme a corriger
-#plt.hist(data['Genre'])
-#plt.title('Histogramme genre')
+root = tk.Tk()
+root.title("Histogramme du Taux de réussite à l'examen à l'examen par genre")
+root.geometry("1920x1080")
+
+fig, ax = plt.subplots(figsize=(16, 9))
+ax.hist(data["Genre"], bins=5, color="skyblue", edgecolor="black")
+
+ax.set_title("Histogramme")
+ax.set_xlabel("Genre")
+ax.set_ylabel("Taux de réussite à l'examen à l'examen")
+
+canvas = FigureCanvasTkAgg(fig, master=root)
+canvas.draw()
+canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 print("=============================================")
 #Camembert a corriger
 #data = data('')['Genre'].count().reset_index()
