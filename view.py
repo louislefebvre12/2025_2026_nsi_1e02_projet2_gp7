@@ -1,25 +1,33 @@
 
-from tkinter import *
+from tkinter import ttk
 
-class View:
-    def __init__ (self, window):
-        self.window = window
-        self.window.title("Gestion des Noms et Prénoms")
-        self.window.geometry("500x400")
-        self.window.geometry('600x400')
-        self.window.title('Multiple windows')
+class MainView:
+    def __init__(self, root, controller):
+        self.controller = controller
+        self.root = root
+        self.root.title("Fenêtre principale")
 
-        self.button1 = Button(window, text = 'Open main window')
-        self.button1.pack(expand = True)
+        ttk.Label(root, text="Menu principal").pack(pady=10)
 
-        self.button2 = Button(window, text = 'Close main window')
-        self.button2.pack(expand = True)
+        ttk.Button(
+            root,
+            text="Ouvrir Fenêtre 1",
+            command=self.controller.open_window1
+        ).pack(pady=5)
 
-        self.button3 = Button(window, text = 'PRÉDICTION')
-        self.button3.pack(expand = True)
-        
-        self.button4 = Button(window, text = 'QuiT')
-        self.button4.pack(expand = True)
+        ttk.Button(
+            root,
+            text="Ouvrir Fenêtre 2",
+            command=self.controller.open_window2
+        ).pack(pady=5)
+
+        ttk.Button(
+            root,
+            text="Ouvrir Fenêtre 3",
+            command=self.controller.open_window3
+        ).pack(pady=5)
+
+
 
 
 
