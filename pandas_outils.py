@@ -122,10 +122,10 @@ root.geometry("1200x800")
 
 fig, ax = plt.subplots(figsize=(12, 12))
 
-ax.pie( #permet de créer le camembert
+ax.pie( #permet de créer le camembert 
     df["Session"],
-    labels=df["Label"],
-    autopct='%1.1f%%',
+    labels=df["Label"], 
+    autopct='%1.1f%%', # le premier % est pour le début du format le 1 est pour le float avec un chiffre apres la virgule l'avant dernier % est pour le pourcentage et le dernier % est pour la fin du format
     startangle=90
 )
 
@@ -136,17 +136,15 @@ plt.tight_layout()
 canvas = FigureCanvasTkAgg(fig, master=root) #affichage
 canvas.draw()
 canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
-plt.show ()
+plt.show () 
 print("=============================================")
 #Diagramme à barres groupées a corriger
 
-sns.barplot(data=data, x="Taux de réussite à l'examen", y="Voie", hue="Genre")
+sns.barplot(data=data, x="Taux de réussite à l'examen", y="Voie", hue="Genre") #hue permet de séparer les deux genres
 plt.title("Taux de réussite à l'examen en fonction de la voie et du genre") 
 
 #Diagrammes à barres
 # differents_taux_groupes = data[['Département', 'Taux de réussite']].groupby('Département').mean().reset_index()
-
-
 # plt.bar(data['Département'], differents_taux_groupes['bill_length_mm'])
 # plt.title('PPLus haut taux de réussite par département')
 
