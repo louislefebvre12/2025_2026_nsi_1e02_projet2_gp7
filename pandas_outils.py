@@ -136,17 +136,19 @@ plt.tight_layout()
 canvas = FigureCanvasTkAgg(fig, master=root) #affichage
 canvas.draw()
 canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+plt.show ()
 print("=============================================")
 #Diagramme à barres groupées a corriger
-#sns.barplot(data=data, x='Voie', y='Session', hue='Genre')
-#plt.title('diagramme session voie et genre')
+
+sns.barplot(data=data, x="Taux de réussite à l'examen", y="Voie", hue="Genre")
+plt.title("Taux de réussite à l'examen en fonction de la voie et du genre") 
 
 #Diagrammes à barres
-differents_taux_groupes = data[['Département', 'Taux de réussite']].groupby('Département').mean().reset_index()
+# differents_taux_groupes = data[['Département', 'Taux de réussite']].groupby('Département').mean().reset_index()
 
 
-plt.bar(data['Département'], differents_taux_groupes['bill_length_mm'])
-plt.title('PPLus haut taux de réussite par département')
+# plt.bar(data['Département'], differents_taux_groupes['bill_length_mm'])
+# plt.title('PPLus haut taux de réussite par département')
 
 
 plt.show ()
