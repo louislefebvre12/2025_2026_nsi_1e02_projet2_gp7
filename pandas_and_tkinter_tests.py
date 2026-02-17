@@ -28,6 +28,7 @@ plt.ylabel ("Taux de réussite à l'examen")
 # plt.plot( data["Nombre de présents à l'examen"], data["Code académie"], ) peut servir pour comparer deux colonnes
 sns.barplot(data=data, x="Taux de réussite à l'examen", y="Genre")
 plt.title("Diagramme du taux de réussite à l'examen en fonction du genre")
+plt.plot()
 plt.show ()
 
 #ca fait un histogramme sur le du taux de réussite en fonction de la voie
@@ -47,7 +48,7 @@ root.title("Histogramme du taux de réussite à l'examen par code département")
 root.geometry("1920x1080")
 
 fig, ax = plt.subplots(figsize=(21, 10))
-ax.hist(data["Code département"], bins=5, color="skyblue", edgecolor="black")
+ax.hist(data["Code département"], bins=5, color="darkmagenta", edgecolor="black")
 
 ax.set_title("Histogramme")
 ax.set_xlabel("Code département")
@@ -59,7 +60,7 @@ canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 plt.show ()
 
 
-#ca fait un camembert du taux de réussite par voie
+#ca fait un camembew du taux de réussite par voie
 
 colonne_categorie = "Voie"
 colonne_valeur = "Taux de réussite à l'examen"
@@ -81,7 +82,7 @@ wedges, texts, autotexts = ax.pie(
 )
 
 ax.legend(
-    wedges,                   # les parts du camembert
+    wedges,                   # les parts du camembew
     df_grouped.index,         # noms des catégories
     title="Voie",
     loc="center right",        # position de la légende
