@@ -10,7 +10,6 @@ from matplotlib.figure import Figure
 from model import Model
 from view import MainView
 from window1 import Window1
-from window2 import Window2
 from window3 import Window3
 
 
@@ -21,9 +20,6 @@ class Controller:
 
     def open_window1(self):
         Window1()
-
-    def open_window2(self):
-        Window2()
 
     def open_window3(self):
         Window3()
