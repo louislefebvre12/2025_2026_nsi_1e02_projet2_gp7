@@ -9,7 +9,7 @@ EXCEL_PATH = "fr-en-baccalaureat-par-departement.xlsx"
 class Window3:
     def __init__(self):
         self.window = tk.Toplevel()
-        self.window.title("Estimation de réussite au BAC")
+        self.window.title("2. Prédicteur - Estimation de réussite au BAC")
 
         try:
             self.df = pd.read_excel(EXCEL_PATH)
@@ -23,7 +23,7 @@ class Window3:
 
         title = ttk.Label(
             self.window,
-            text="Calcule ta probabilité de réussite au BAC",
+            text="2. Prédicteur - Calcule ta probabilité de réussite au BAC",
             padding=10,
         )
         title.config(font=("Courrier", 16, "bold"))

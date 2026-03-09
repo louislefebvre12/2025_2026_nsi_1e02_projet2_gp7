@@ -13,11 +13,11 @@ EXCEL_PATH = "fr-en-baccalaureat-par-departement.xlsx"
 class Window1:
     def __init__(self):
         self.window = tk.Toplevel()
-        self.window.title("Résultats au BAC")
+        self.window.title("1. Graphiques - Résultats au BAC")
 
         title_label = ttk.Label(
             self.window,
-            text="Résultats au BAC - Graphiques",
+            text="1. Graphiques - Résultats au BAC",
             padding=10
         )
         title_label.config(font=("Courrier", 20, "bold"))

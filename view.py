@@ -11,13 +11,13 @@ class MainView:
 
         ttk.Button(
             root,
-            text="Ouvrir Fenêtre 1 (Graphiques?)",
+            text="1. Graphiques",
             command=self.controller.open_window1
         ).pack(pady=5)
 
         ttk.Button(
             root,
-            text="Ouvrir Fenêtre 3(Statistiques?)",
+            text="2. Prédicteur",
             command=self.controller.open_window3
         ).pack(pady=5)
 
