@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
-# Nom du fichier de données téléchargé depuis data.gouv.fr
+# Nom du fichier de données téléchargé depuis data.gouv.fr.
+# Il contient, pour chaque combinaison (session, académie, département, voie, genre),
+# le nombre de présents, d'admis et le taux de réussite au BAC.
 EXCEL_PATH = "fr-en-baccalaureat-par-departement.xlsx"
 
 
@@ -29,12 +31,16 @@ class Window1:
             self.df = pd.DataFrame()
 
         if not self.df.empty:
+            # On supprime uniquement les lignes entièrement vides
+            # (cela peut arriver à la fin du fichier Excel).
             self.df = self.df.dropna(how="all")
 
+        # Figure Matplotlib commune à tous les graphiques de cette fenêtre
         self.fig, self.ax = plt.subplots(figsize=(7, 4))
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
+        # Frame qui contient les boutons de choix du graphique
         button_frame = ttk.Frame(self.window)
         button_frame.pack(pady=10)
 
@@ -108,7 +114,8 @@ class Window1:
         return True
 
     def plot_taux_par_annee(self):
-        # Session = année, Taux de réussite à l'examen
+        # Session = année, Taux de réussite à l'examen.
+        # On calcule ici l'évolution du taux moyen par année.
         taux_col = "Taux de r\u00e9ussite \u00e0 l'examen"
         if not self._check_data(["Session", taux_col]):
             return
@@ -169,7 +176,9 @@ class Window1:
         )
 
         self._clear_ax()
-        # On place les barres à des positions 0,1,2,... et on met les années en étiquettes
+        # On place les barres à des positions 0,1,2,... (entiers)
+        # et on met les années en étiquettes pour éviter des valeurs
+        # numériques étranges sur l'axe des abscisses.
         x = range(len(df_group))
         self.ax.bar(x, df_group[candidats_col], color="tab:orange")
         self.ax.set_xticks(x)
