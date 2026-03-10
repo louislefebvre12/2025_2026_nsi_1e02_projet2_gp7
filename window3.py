@@ -118,6 +118,6 @@ class Window3:
             return
 
         taux_moyen = df[self.taux_col].mean()
-        # On affiche uniquement le pourcentage arrondi à une décimale
+    
         self.result_label.config(text=f"{taux_moyen:.1f} %")
 
